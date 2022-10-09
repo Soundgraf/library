@@ -2,9 +2,8 @@ package com.example.library.controller;
 
 import com.example.library.model.converter.AuthorMapper;
 import com.example.library.model.converter.BookMapper;
-import com.example.library.model.dto.AuthorDto;
 import com.example.library.model.dto.BookDto;
-import com.example.library.model.entity.Book;
+import com.example.library.repository.BookRepository;
 import com.example.library.service.abstracts.AuthorService;
 import com.example.library.service.abstracts.BookService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,6 +32,7 @@ public class BookController {
     public static final String DELETED = "Deleted book id: {}";
 
     private final BookService bookService;
+    private final BookRepository bookRepository;
     //    -----------
     private final AuthorService authorService;
     private final BookMapper bookMapper;
@@ -45,11 +45,6 @@ public class BookController {
     @GetMapping("/{id}")
     public BookDto getBook(@PathVariable Long id) {
         BookDto bookDto = bookService.findBookDtoById(id);
-//--------------------
-        Long authorId = bookDto.getAuthorId(authorService.findAuthorDtoById(id));
-        AuthorDto authorDtoById = authorService.findAuthorDtoById(authorId);
-        bookDto.setAuthorSurname(authorDtoById.getSurname());
-//---------------------
         log.info(LOADED, bookDto.getTitle());
         return bookDto;
     }

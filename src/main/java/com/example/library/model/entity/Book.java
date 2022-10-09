@@ -19,12 +19,12 @@ public class Book {
     private String title;
     private Integer year;
 
-//    @ToString.Exclude
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "author_id")
     private Author author;
 
-//    @ToString.Exclude
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;

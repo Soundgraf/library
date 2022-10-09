@@ -21,7 +21,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookDto findBookDtoById(Long id) {
-        return bookMapper.bookToDto(bookRepository.findById(id).get());
+        BookDto bookDto = bookMapper.bookToDto(bookRepository.findById(id).get());
+        bookDto.setAuthorSurname(bookRepository.authorSurname(id));
+        return bookDto;
     }
 
     @Override

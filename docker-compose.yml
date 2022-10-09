@@ -10,3 +10,5 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: rootroot
     restart: always
+  jdk:
+    image: openjdk:17
