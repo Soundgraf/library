@@ -93,7 +93,7 @@ public class AuthorController {
             return new ResponseEntity<>(authorDto, HttpStatus.BAD_REQUEST);
         }
         log.info(UPDATED, authorDto.getName(), authorDto.getSurname());
-        return new ResponseEntity<>(authorService.saveAuthorDto(authorDto), HttpStatus.OK);
+        return new ResponseEntity<>(authorService.updateAuthorDto(authorDto), HttpStatus.OK);
     }
 
     @Operation(summary = "deleteAuthor", description = "DELETE AUTHOR")
