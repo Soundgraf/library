@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/db.changelog-1.0.sql
+  - include:
+      file: db/changelog/db.changelog-1.1.sql
+#  - include:
+#      file: db/changelog/db.changelog-1.2.sql
+
+#  - changeSet:
+#      id: 1.1
+#      author: Avgustin
+#      changes:
+#        - createTable:
+#            tableName: author
+#            remarks: Rev
+#            columns:
+#              - column:
+#                  name: id
+#                  type: integer
+#                  autoIncrement: true
+#                  constraints:
+#                    primaryKeys: true
+#                    primaryKeyName: article_pk
+#              - column:
+#                  name: name
+#                  type: varchar(255)
+#              - column:
+#                  name: surname
+#                  type: varchar(255)
+#  - changeSet:
+#      id: 1.2
+#      author: Avgustin
+#      changes:
+#        - sql:
+#            sql: insert into author (name, surname) values ('One', 'OneOne')
+#        - sql:
+#            sql: insert into author (name, surname) values ('Two', 'TwoTwo')
+#        - insert:
+#            tableName: author
+#            columns:
+#              - column:
+#                  name: name
+#                  value: 'Three'
+#              - column:
+#                  name: surname
+#                  value: 'ThreeThree'
