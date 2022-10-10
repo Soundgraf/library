@@ -49,4 +49,9 @@ public class BookServiceImpl implements BookService {
     public void deleteBookDtoById(Long id) {
         bookRepository.deleteById(id);
     }
+
+    @Override
+    public boolean existsBookById(Long id) {
+        return bookRepository.existsById(id);
+    }
 }

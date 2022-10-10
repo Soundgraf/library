@@ -30,10 +30,10 @@ public class AuthorController {
     public static final String UPDATED = "Author was updated: {} {}";
     public static final String DELETED = "Deleted author id: {}";
     public static final String NOT_FOUND = "Not Found ID: {}";
-    public static final String NOT_FOUND_LIST = "List authors is empty";
+    public static final String NOT_FOUND_LIST = "List is empty";
     public static final String BAD_REQUEST_FOR_CREATE = "Bad Request for create: {}";
     public static final String BAD_REQUEST_FOR_UPDATE = "Bad Request for update: {}";
-    public static final String BAD_REQUEST_FOR_DELETE = "Bad Request for delete author with ID: {}";
+    public static final String BAD_REQUEST_FOR_DELETE = "Bad Request for delete with ID: {}";
 
     private final AuthorService authorService;
 
@@ -44,7 +44,7 @@ public class AuthorController {
     @GetMapping("/{id}")
     public ResponseEntity<AuthorDto> getAuthor(@PathVariable Long id) {
         if (!authorService.existsAuthorById(id)) {
-            log.info(NOT_FOUND, authorService.existsAuthorById(id));
+            log.info(NOT_FOUND, id);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         AuthorDto authorDto = authorService.findAuthorDtoById(id);
@@ -61,7 +61,7 @@ public class AuthorController {
         List<AuthorDto> allAuthorDto = authorService.findAllAuthorDto();
         if (allAuthorDto.size() == 0) {
             log.info(NOT_FOUND_LIST);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         log.info(LOADED_ALL, allAuthorDto.size());
         return new ResponseEntity<>(allAuthorDto, HttpStatus.OK);
